@@ -18,13 +18,6 @@ const navs = [
 
 class TopBar extends Component{
 
-    constructor(props){
-      super(props)
-
-    }
-
-
-
     render(){
       return(
         <header className="top-container">
