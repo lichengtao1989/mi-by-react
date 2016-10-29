@@ -59,26 +59,39 @@
   height:40px;
 
 }
-.topbar-cart a:hover{
+.topbar-cart:hover a{
   background:#fff;
   color:#ff6700;
 }
+.topbar-cart:hover .cart-menu{
+  /*display: block;*/
+}
 .cart-menu{
-  display: none;
+  /*display:none;*/
   position:absolute;
   right:0;
   top:40px;
   z-index:31;
   width:316px;
-  padding:15px 0 0;
+  /*height:96px;*/
+  line-height:96px;
+  text-align: center;
   color:#424242;
   background:#fff;
-  box-shadow:0 2px 10px rgba(0,0,0,0.15);
+  box-shadow:0 2px 10px rgba(0,0,0,0.35);
+  overflow: hidden;
 }
-.loading {
-  padding:20px 0;
+.fadein-enter{
+  height:1px;
 }
-.cart-menu .loading{
-  margin:5px 20px 20px;
-  text-align: center;
+.fadein-enter.fadein-enter-active{
+  height:96px;
+  transition:height .2s ease-in;
+}
+.fadein-leave{
+  height:96px;
+}
+.fadein-leave.fadein-leave-active{
+  height:1px;
+  transition: height .3s ease-in
 }

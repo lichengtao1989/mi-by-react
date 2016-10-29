@@ -15,9 +15,27 @@ const navs = [
   {name: '问题反馈', sourceUrl: 'http://static.mi.com/feedback/'},
   {name: 'Select Region', sourceUrl: 'http://www.mi.com/index.html'}
 ]
-
+// const style = {
+//   display:'none'
+// }
 class TopBar extends Component{
+    constructor(props){
+      super(props)
+      this.state = {
+        cartStatus:false
+      };
 
+      ['handleOnMouseOver',
+      'handleOnMouseOut'].forEach((method) => this[method] = this[method].bind(this))
+
+
+    }
+    handleOnMouseOver(){
+      this.setState({ cartStatus:true })
+    }
+    handleOnMouseOut(){
+      this.setState({ cartStatus:false })
+    }
     render(){
       return(
         <header className="top-container">
@@ -27,22 +45,22 @@ class TopBar extends Component{
                   return ( <li key={index} >< a  href={ val.sourceUrl } > { val.name } </a><span className="sep" > { index === navs.length - 1 ? '' : '|'  } </span></li> )
               } )}
             </ul>
-            <div className="topbar-cart" >
-              <a href="#">
+            <div className="topbar-cart" onMouseOver={this.handleOnMouseOver} onMouseOut={ this.handleOnMouseOut} >
+              <a href="#" >
                 <i className="iconfont" ></i>
                 购物车
                 <span>(0)</span>
               </a>
               <ReactCSSTransitionGroup
-                  transitionName="example"
-                  transitionEnterTimeout={500}
-                  transitionLeaveTimeout={300}
-                >
-                <div className="cart-menu" >
-                  <div className="loading" >
-                  购物车中还没有商品，赶紧选购吧！
-                  </div>
-                </div>
+              component="div"
+              transitionName="fadein"
+              transitionEnterTimeout={500}
+              transitionLeaveTimeout={300}
+              >
+              {
+                this.state.cartStatus ? <div className="cart-menu"  >购物车中还没有商品，赶紧选购吧！</div> : null
+              }
+
               </ReactCSSTransitionGroup>
             </div>
             <div className="topbar-info" >
