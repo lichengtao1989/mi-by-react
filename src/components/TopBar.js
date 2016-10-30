@@ -37,6 +37,7 @@ class TopBar extends Component{
       this.setState({ cartStatus:false })
     }
     render(){
+      
       return(
         <header className="top-container">
           <div className="container" >
